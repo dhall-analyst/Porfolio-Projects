@@ -1,3 +1,10 @@
+/*
+Covid 19 Data Exploration
+
+Skills used: Joins, CTE's, Temp Tables, Windows Functions, Aggregate Fundtions, Creating Views, Converting Data Types
+
+*/ 
+
 Select *
 From PortfolioProject..CovidDeaths
 where continent is not null
@@ -13,26 +20,28 @@ Select location, date, total_cases, new_cases, total_deaths, population
 From PortfolioProject..CovidDeaths
 order by 1,2
 
---looking at The Total Cases vs. Total Deaths
+--The Total Cases vs. Total Death
 
 Select location, date, total_cases, total_deaths, (total_deaths/total_cases)*100 as DeathPercentage
 From PortfolioProject..CovidDeaths
 order by 1,2
 
---looking at your specific country
+--Shows likelihood of dying if you contract covid in your country
+
 Select location, date, total_cases, total_deaths, (total_deaths/total_cases)*100 as DeathPercentage
 From PortfolioProject..CovidDeaths
 Where location like '%states%'
 order by 1,2
 
--- Looking a the Total Cases vs. The Population
+-- Total Cases vs. The Population
+-- Shows what percentage of population infected with Covid
 
 Select location, date, population,total_cases, (total_cases/population)*100 as InfectPercentage
 From PortfolioProject..CovidDeaths
 Where location like '%states%'
 order by 1,2
 
--- Looking at the Countries with Highest Infection Rate Compared to Population
+--Countries with Highest Infection Rate Compared to Population
 
 Select location, population, MAX(total_cases) as HighestInfectionCount, MAX((total_cases/population))*100 as PercentagePopulationInfected
 From PortfolioProject..CovidDeaths
@@ -40,8 +49,17 @@ From PortfolioProject..CovidDeaths
 Group by Location, population
 order by PercentagePopulationInfected DESC
 
--- LETS BREAK THINGS DOWN BY CONTIENENT
+-- Countries with Highest Death Count per Population
 
+Select Location, MAX(cast(Total_deaths as int)) as TotalDeathCount
+From PortfolioProject..CovidDeaths
+--Where location like '%states%'
+Where continent is not null 
+Group by Location
+order by TotalDeathCount desc
+
+-- BREAKING THINGS DOWN BY CONTIENENT
+-- Showing contintents with the highest death count per population
 
 Select continent, Max(Cast(Total_Deaths as bigint)) as TotalDeathCount
 From PortfolioProject..CovidDeaths
@@ -61,8 +79,6 @@ order by TotalDeathCount DESC
 
 --want to exclude categories that mention income
 
---showing the contient with the hightest death count
-
 Select continent, Max(Cast(Total_Deaths as bigint)) as TotalDeathCount
 From PortfolioProject..CovidDeaths
 --Where location like '%states%'
@@ -79,7 +95,8 @@ Where continent is not null
 --group by date
 order by 1,2
 
---Covid Vaccinations Comparisons
+--Total Populations Vs. Vaccinations
+--Shows Percentage of Population that has Recieved at least One Covid Vaccine
 
 Select dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations
 , SUM(Cast(vac.new_vaccinations as bigint)) OVER (partition by dea.location)
@@ -101,7 +118,7 @@ Join PortfolioProject..CovidVaccinations vac
 Where dea.continent is not null
 order by 2,3
 
---USE CTE
+--Using CTE to perfomr Calculation on Partition By in previous query
 
 With PopsVac (Continent, location, date, population,new_vaccinations, RollingPeopleVaxed)
 as 
@@ -118,7 +135,8 @@ Where dea.continent is not null
 select *, (RollingPeopleVaxed/population)*100
 From PopsVac
 
---TEMP TABLE
+--Using TEMP TABLE to perform Calculation on Partition By in previous query
+
 Drop Table if exists #PercentPopulationVaccinated
 Create Table #PercentPopulationVaccinated
 (
@@ -156,9 +174,6 @@ Join PortfolioProject..CovidVaccinations vac
 	and dea.date = vac.date
 --Where dea.continent is not null
 --order by 2,3
-
-select*
-From PercentPopulationVaccinated
 
 Create View ContinentWithHighestDeathCount as 
 Select continent, Max(Cast(Total_Deaths as bigint)) as TotalDeathCount

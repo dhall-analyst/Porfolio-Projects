@@ -1,0 +1,111 @@
+SELECT 
+distinct fuel_type
+from portfolioproject..automobile_data
+
+
+select
+    min(length) as min_length,
+    max(length) as max_length
+FROM
+portfolioproject..automobile_data
+
+--filling in missing data	
+SELECT *
+From portfolioproject..automobile_data
+WHERE 
+num_of_doors is NULL 
+
+update 
+portfolioproject..automobile_data
+SEt
+    num_of_doors = 'four'
+where 
+    make = 'dodge'
+    and fuel_type = 'gas'
+    and body_style = 'sedan'
+
+update 
+portfolioproject..automobile_data
+SEt
+    num_of_doors = 'four'
+where 
+    make = 'mazda'
+    and fuel_type = 'diesel'
+    and body_style = 'sedan'
+
+SELECT
+  *
+FROM
+portfolioproject..automobile_data
+
+WHERE 
+
+  num_of_doors IS NULL;
+
+--identify potential errors
+
+SELECT
+  DISTINCT num_of_cylinders
+FROM
+  portfolioproject..automobile_data
+
+
+
+update 
+	portfolioproject..automobile_data
+SET
+  num_of_cylinders = 'two'
+WHERE
+  num_of_cylinders = 'tow'
+
+  SELECT
+  DISTINCT num_of_cylinders
+FROM
+  portfolioproject..automobile_data
+
+  SELECT
+  MIN(compression_ratio) AS min_compression_ratio,
+  MAX(compression_ratio) AS max_compression_ratio
+FROM portfolioproject..automobile_data
+
+WHERE
+
+  compression_ratio <> 70;
+
+--Deleting Rows as Needed
+--Checking how many need deleting
+
+select
+	count (*) as num_of_rows_to_delete
+From
+	portfolioproject..automobile_data
+Where
+	compression_ratio=70
+
+--deleting them
+
+Delete portfolioproject..automobile_data
+
+WHERE compression_ratio = 70;
+
+
+--checking data for inconsistencies
+
+ SELECT
+  DISTINCT drive_wheels
+  From portfolioproject..automobile_data
+
+
+  SELECT
+  DISTINCT drive_wheels,
+  LEN(drive_wheels) AS string_length
+    From portfolioproject..automobile_data
+
+
+--Looking at the Price of Cars
+
+select Max(price)
+from automobile_data
+
+select Min(price)
+from automobile_data

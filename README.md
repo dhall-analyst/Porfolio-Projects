@@ -17,7 +17,7 @@ Relevant Files:
 Relevant Files: 
 
 1. Automobile Data Cleaning Project
-2. Nashville Data Cleaning Projec
+2. Nashville Data Cleaning Project
 
 
 

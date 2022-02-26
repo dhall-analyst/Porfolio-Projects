@@ -20,5 +20,5 @@ Relevant Files:
 
 ## **Part 3: Data Visualizations**
 
-Using Data Quieries from Part 1 I created visualizations in Tableau.
+Using  the Data Queries from Part 1 I created visualizations in Tableau.
 

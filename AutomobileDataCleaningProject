@@ -1,5 +1,7 @@
+--Cleaning Data Using SQL Queries 
+
 SELECT 
-distinct fuel_type
+	distinct fuel_type
 from portfolioproject..automobile_data
 
 

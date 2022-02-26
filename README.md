@@ -17,8 +17,15 @@ Relevant Files:
 1. Automobile Data Cleaning Project
 2. Nashville Data Cleaning Project
 
+## **Part 3: Analyzing Data to Answer Questions**
+Subjects of focus
+    Combining Mulitple Datasets
+    VLOOKUP
+    JOINS
+    PivotTables
+    SQL Converstions
 
-## **Part 3: Data Visualizations**
+## **Part 4: Data Visualizations**
 
 Using  the Data Queries from Part 1 I created visualizations in Tableau.
 

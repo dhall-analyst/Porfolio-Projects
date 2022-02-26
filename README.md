@@ -12,7 +12,7 @@ Relevant Files:
 
 
 
-## **Part 2 Data Cleaning in SQL **
+## **Part 2 Data Cleaning in SQL**
 
 Relevant Files: 
 

@@ -10,8 +10,6 @@ Relevant Files:
 1. Covid Portfolio Project
 
 
-
-
 ## **Part 2: Data Cleaning in SQL**
 
 Relevant Files: 
@@ -20,4 +18,7 @@ Relevant Files:
 2. Nashville Data Cleaning Project
 
 
+## **Part 3: Data Visualizations**
+
+Using Data Quieries from Part 1 I created visualizations in Tableau.
 

@@ -3,7 +3,7 @@
 I created to showcase my data analytics toolbox that I am developing under the Google Careers Data Analystics Certification. Under this certification I will learn key analytical skills (data cleaning, analysis, & visualization) and tools (Excel, spreadsheets, SQL, R programming, Tableau). I will also learn how to visualize and present data findings in dashboards and presentations
 
 
-## **Part 1 SQL Data Exploration**
+## **Part 1: SQL Data Exploration**
 
 Relevant Files: 
 
@@ -12,7 +12,7 @@ Relevant Files:
 
 
 
-## **Part 2 Data Cleaning in SQL**
+## **Part 2: Data Cleaning in SQL**
 
 Relevant Files: 
 

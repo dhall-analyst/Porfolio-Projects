@@ -23,8 +23,7 @@ Subjects of focus
     VLOOKUP
     JOINS
     PivotTables
-    SQL Converstions
-
+    SQL Calculations
 ## **Part 4: Data Visualizations**
 
 Using  the Data Queries from Part 1 I created visualizations in Tableau.

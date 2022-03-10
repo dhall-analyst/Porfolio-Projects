@@ -26,5 +26,5 @@ Subjects of focus
     SQL Calculations
 ## **Part 4: Data Visualizations**
 
-Using  the Data Queries from Part 1 I created visualizations in Tableau.
+Using the COVID Exploration Data, I created visualizations and a dashboard using Tableau.
 

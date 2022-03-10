@@ -7,7 +7,7 @@ I created  this portfolio to showcase my data analytics toolbox that I am develo
 
 Relevant Files: 
 
-1. Covid Portfolio Project
+1. Covid Data Exploration
 
 
 ## **Part 2: Data Cleaning in SQL**

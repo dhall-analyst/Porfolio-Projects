@@ -1,6 +1,6 @@
 # Data Analyst Porfolio Projects
 
-I created  this portfolio to showcase my data analytics toolbox that I am developing under the Google Careers Data Analystics Certification. Under this certification I will learn key analytical skills (data cleaning, analysis, & visualization) and tools (Excel, spreadsheets, SQL, R programming, Tableau). I will also learn how to visualize and present data findings in dashboards and presentations
+I created  this portfolio to showcase my data analytics toolbox that I am developing under the Google Careers Data Analystics Certification. Under this certification I will learn key analytical skills (data cleaning, analysis, & visualization) and tools (Excel, spreadsheets, SQL, R programming, Tableau). I am also learn how to visualize data findings in dashboards and presentations
 
 
 ## **Part 1: SQL Data Exploration**

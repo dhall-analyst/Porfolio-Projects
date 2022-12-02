@@ -1,4 +1,4 @@
---Cleaning Data Using SQL Queries 
+##Cleaning Data Using SQL Queries 
 
 SELECT 
 	distinct fuel_type
@@ -11,7 +11,8 @@ select
 FROM
 portfolioproject..automobile_data
 
---filling in missing data	
+## Using Quereies to Fill in missing data	
+
 SELECT *
 From portfolioproject..automobile_data
 WHERE 
@@ -44,13 +45,12 @@ WHERE
 
   num_of_doors IS NULL;
 
---identify potential errors
+# Identifing potential errors in the data
 
 SELECT
   DISTINCT num_of_cylinders
 FROM
   portfolioproject..automobile_data
-
 
 
 update 
@@ -60,22 +60,19 @@ SET
 WHERE
   num_of_cylinders = 'tow'
 
-  SELECT
+SELECT
   DISTINCT num_of_cylinders
 FROM
   portfolioproject..automobile_data
 
-  SELECT
+SELECT
   MIN(compression_ratio) AS min_compression_ratio,
   MAX(compression_ratio) AS max_compression_ratio
 FROM portfolioproject..automobile_data
-
 WHERE
-
   compression_ratio <> 70;
 
---Deleting Rows as Needed
---Checking how many need deleting
+## Deleting Specified Rows as Needed 
 
 select
 	count (*) as num_of_rows_to_delete
@@ -84,14 +81,14 @@ From
 Where
 	compression_ratio=70
 
---deleting them
+# Delete Example 1
 
 Delete portfolioproject..automobile_data
 
 WHERE compression_ratio = 70;
 
 
---checking data for inconsistencies
+# Checking for inconsistencies in the data
 
  SELECT
   DISTINCT drive_wheels
@@ -104,7 +101,7 @@ WHERE compression_ratio = 70;
     From portfolioproject..automobile_data
 
 
---Looking at the Price of Cars
+# Looking at the Price of Cars
 
 select Max(price)
 from automobile_data

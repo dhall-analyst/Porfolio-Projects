@@ -10,6 +10,7 @@ Reach to me via Linkedin https://www.linkedin.com/in/dionahall-1/
 Relevant Files: 
 
 1. Covid Data Exploration
+https://github.com/dhall-analyst/Porfolio-Projects/blob/main/COVID-19%20Data%20Exploration%20(latest%20March%202022)
 
 
 ## **Part 2: Data Cleaning in SQL Examples**
@@ -17,7 +18,9 @@ Relevant Files:
 Relevant Files: 
 
 1. Automobile Data Cleaning Project
-2. Nashville Data Cleaning Project
+https://github.com/dhall-analyst/Porfolio-Projects/blob/main/AutomobileDataCleaningProject
+3. Nashville Data Cleaning Project
+https://github.com/dhall-analyst/Porfolio-Projects/blob/main/Nashville%20Data%20Cleaning%20Project.sql
 
     
 ## **Part 3: Data Visualizations**
@@ -25,7 +28,12 @@ Relevant Files:
 Here you will find my Tableau Public Profile where I house multiple dashboards/viz projects. 
 https://public.tableau.com/app/profile/diona.h.
 
+
 # **Part 4: Excel and Power BI Dashboard Projects**
+https://github.com/dhall-analyst/Porfolio-Projects/blob/main/Bike%20Sales%20Dashboard-Excel.xlsx
+
+https://onedrive.live.com/embed?cid=C6004278DA113AE9&resid=C6004278DA113AE9%2149673&authkey=AAzb2RVTy0HbrJ0&em=2&wdAr=1.7777777777777777
+
 
 # **Part 5: Python Projects Coming Soon**
 

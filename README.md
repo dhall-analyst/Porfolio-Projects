@@ -1,6 +1,8 @@
 # Data Analyst Porfolio Project
 
-I created  this portfolio to showcase my data analytics toolbox that I aquired under the Google Careers Data Analystics Certification. Under this certification I learned key analytical skills (data cleaning, analysis, & visualization) and tools (Excel, spreadsheets, SQL, R programming, Tableau). I am also learn how to visualize data findings in dashboards and presentations
+I created  this portfolio to showcase my data analytics toolbox that I aquired under the Google Careers Data Analystics Certification. Since this certification, I have expanded on my ability to write complex queries in SQL and build dashboards in Excel, Tableau, and Power BI. 
+
+Reach to me via Linkedin https://www.linkedin.com/in/dionahall-1/
 
 
 ## **Part 1: SQL Data Exploration Example**
@@ -21,6 +23,7 @@ Relevant Files:
 ## **Part 3: Data Visualizations**
 
 Here you will find my Tableau Public Profile where I house multiple dashboards/viz projects. 
+https://public.tableau.com/app/profile/diona.h.
 
 # **Part 4: Excel and Power BI Dashboard Projects**
 

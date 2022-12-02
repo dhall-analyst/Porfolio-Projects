@@ -30,9 +30,9 @@ https://public.tableau.com/app/profile/diona.h.
 
 
 # **Part 4: Excel and Power BI Dashboard Projects**
-https://github.com/dhall-analyst/Porfolio-Projects/blob/main/Bike%20Sales%20Dashboard-Excel.xlsx
+Excel: https://github.com/dhall-analyst/Porfolio-Projects/blob/main/Bike%20Sales%20Dashboard-Excel.xlsx
 
-https://onedrive.live.com/embed?cid=C6004278DA113AE9&resid=C6004278DA113AE9%2149673&authkey=AAzb2RVTy0HbrJ0&em=2&wdAr=1.7777777777777777
+PPTX: https://onedrive.live.com/embed?cid=C6004278DA113AE9&resid=C6004278DA113AE9%2149673&authkey=AAzb2RVTy0HbrJ0&em=2&wdAr=1.7777777777777777
 
 
 # **Part 5: Python Projects Coming Soon**

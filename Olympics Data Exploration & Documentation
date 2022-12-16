@@ -1,0 +1,171 @@
+Olympic SQL Project Documentation
+Downloaded file from Kaggle, data is hosted on my local computer: 
+https://www.kaggle.com/datasets/heesoo37/120-years-of-olympic-history-athletes-and-results
+
+SQL queries performed in PG ADMIN 4
+
+# PART: 1 LOAD DATA INTO DATASETS
+
+    --Created Database in PG Admin 4 called Olympic_history
+    --Created Table in olympic_history
+ 
+          DROP TABLE IF EXISTS OLYMPICS_HISTORY;
+          CREATE TABLE IF NOT EXISTS OLYMPICS_HISTORY
+          (
+          id                 INT,
+          name         VARCHAR,
+          sex                VARCHAR,
+          age                VARCHAR,
+          height        VARCHAR,
+          weight        VARCHAR,
+          team        VARCHAR,
+          noc                VARCHAR,
+          games        VARCHAR,                
+          year        INT,        
+          seasons        VARCHAR,        
+          city        VARCHAR,        
+          sport        VARCHAR,
+          event        VARCHAR,
+          medal        VARCHAR
+          );
+ 
+          DROP TABLE IF EXISTS OLYMPICS_HISTORY_NOC_REGIONS;
+          CREATE TABLE IF NOT EXISTS OLYMPICS_HISTORY_NOC_REGIONS
+          (
+          noc                VARCHAR,
+          region        VARCHAR,
+          notes         VARCHAR
+
+          )
+--Imported athelete_events data into olympics_history table
+--Changed Escape from ' to " after finding error in dataset on line A250019
+--Imported noc_regions data into olympics_history_noc_regions table
+
+# PART 2: IDENTIFY SPORTS PLAYED IN ALL SUMMER OLYMPIC GAMES
+
+--1. FIND TOTAL NO OF SUMMMER OLYMPIC GAMES
+        With t1 as (SELECT count(distinct games) as total_summer_games
+         FROM OLYMPICS_HISTORY
+        WHERE season = 'Summer'
+        )
+--2.FIND FOR EACH SPORT, HOW MANY GAMES WERE PLAYED IN
+        t2 as
+        (select distinct sport, games
+         from Olympics_history
+         where season = 'Summer' order by games),
+        t3 as
+        (Select sport, count(games) as no_of_games
+        from t2
+                 group by sport)
+--3. COMPARE t1 with t2,t3  w/ a JOIN STATEMENT
+      Select *
+      from t3
+      JOIN t1 on t1.total_summer_games = t3.no_of_games;
+ 
+ 
+# PART 3: WRITE SQL QUERY TO FETCH THE TOP 5 ATHLETES WHO WON THE MOST GOLD MEDALS.
+ 
+    with t1 as
+    (Select name , count(1) as total_medals
+    From olympics_history
+    Where medal = 'Gold'
+    group by name
+    order by count (1) desc),
+ 
+    t2 as
+    (Select *, dense_rank() over(order by total_medals desc) as rnk
+    from t1)
+    Select *
+    From t2
+    where rnk <= 5;
+ 
+--Had to use rank because I couldnt limit by 5 without getting the first 5 athletes from t1
+
+
+ 
+# PART 4: WRITE SQL QUERY TO DISPLAY THE TOTAL GOLD, SILVER, AND BRONZE MEDAL WON BY EACH COUNTRY 
+
+Select * From olympics_history where medal <> 'NA'
+ 
+--Need to convert data from row level data to column level data, will need to aggreagate data won by each country.
+--Crosstab does the same thing as pivot table
+--Create a country columns
+ 
+create extension tablefunc;
+ 
+    select country
+    , coalesce(gold, 0) as gold
+    , coalesce(silver, 0) as silver
+    , coalesce(bronze, 0) as bronze
+    from crosstab('Select nr.region as country, medal, count(1) as total_medals
+    From olympics_history oh
+    join olympics_history_noc_regions nr on nr.noc = oh.noc
+    where medal <> ''NA''
+    group by  nr.region, medal
+    order by  nr.region, medal',
+    'values (''Bronze''), (''Gold''), (''Silver'')')
+    as result(country VARCHAR, bronze bigint, gold bigint, silver bigint)
+    order by gold desc, silver desc, bronze desc;
+
+--You have to add values(str) because it will not automatically compare
+--You have to add , coalesce to get null entries to say zero
+--Order by gold desc…. To get the top countries first
+
+ 
+# PART 5: WRITE SQL QUERY TO FETCH THE COUNTRY WHICH WON THE MOST GOLD, SILVER AND BROZNE MEDAL DURING EACH OLYMPIC GAME.
+
+-1st part of query is to segregate the data of games and the associated country and the total number of medal they have won. 
+select substring(games_country, 1, position(' - ' in games_country) - 1) as games
+, substring(games_country, position(' - ' in games_country) + 3) as country
+, coalesce(gold, 0) as gold
+, coalesce(silver, 0) as silver
+, coalesce(bronze, 0) as bronze
+from crosstab('Select concat(games, '' - '', nr.region) as games_country, medal, count(1) as total_medals
+From olympics_history oh
+join olympics_history_noc_regions nr on nr.noc = oh.noc
+where medal <> ''NA''
+group by  games, nr.region, medal
+order by  games, nr.region, medal',
+'values (''Bronze''), (''Gold''), (''Silver'')')
+as result(games_country VARCHAR, bronze bigint, gold bigint, silver bigint)
+order by games_country;
+
+--2nd part
+Move all query into with clause.
+For each olypmic game, create a separate partition for each game, in each partition see who has the highest medals
+    Need to do partition of data and sorting of data at the same time
+   Can use the max function or first value function of the window functions
+-For each game its going to create a partition and its going to order the data by gold in dec order
+-Corrresponding to each Olympic games I have a country that has the highest gold, '' silver, '' bronze with the total number of medals they've won
+ 
+ 
+with temp as
+(select substring(games_country, 1, position(' - ' in games_country) - 1) as games
+, substring(games_country, position(' - ' in games_country) + 3) as country
+, coalesce(gold, 0) as gold
+, coalesce(silver, 0) as silver
+, coalesce(bronze, 0) as bronze
+from crosstab('Select concat(games, '' - '', nr.region) as games_country, medal, count(1) as total_medals
+From olympics_history oh
+join olympics_history_noc_regions nr on nr.noc = oh.noc
+where medal <> ''NA''
+group by  games, nr.region, medal
+order by  games, nr.region, medal',
+'values (''Bronze''), (''Gold''), (''Silver'')')
+as result(games_country VARCHAR, bronze bigint, gold bigint, silver bigint)
+order by games_country)
+Select distinct games
+, concat(first_value(country) over(partition by games order by gold desc)
+, ' - '
+, first_value(gold) over(partition by games order by gold desc)) as max_gold
+, concat(first_value(country) over(partition by games order by silver desc)
+, ' - '
+, first_value(silver) over(partition by games order by silver desc)) as max_silver
+, concat(first_value(country) over(partition by games order by bronze desc)
+, ' - '
+, first_value(bronze) over(partition by games order by bronze desc)) as max_bronze
+from temp
+order by games;
+
+
+ 

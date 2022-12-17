@@ -1,6 +1,6 @@
 # Data Analyst Porfolio Project
 
-I created  this portfolio to showcase my data analytics toolbox that I aquired under the Google Careers Data Analystics Certification. Since this certification, I have expanded on my ability to write complex queries in SQL and build dashboards in Excel, Tableau, and Power BI. 
+I created this portfolio to showcase my data analytics toolbox that I acquired under the Google Careers Data Analytics Certification. Since this certification, I have expanded my ability to write complex queries in SQL and build dashboards in Excel, Tableau, and Power BI.
 
 Reach to me via Linkedin https://www.linkedin.com/in/dionahall-1/
 

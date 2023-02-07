@@ -1,4 +1,4 @@
-#Analyst Porfolio Projects#
+## *Analyst Porfolio Projects*
 
 I created this portfolio to showcase my analytical toolbox that encompasses: SQL, Tableau, Power BI, Excel and Python. 
 

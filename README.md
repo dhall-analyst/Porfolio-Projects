@@ -1,6 +1,6 @@
-# Data Analyst Porfolio Project
+#Analyst Porfolio Projects
 
-I created this portfolio to showcase my data analytics toolbox that I acquired under the Google Careers Data Analytics Certification. Since this certification, I have expanded my ability to write complex queries in SQL and build dashboards in Excel, Tableau, and Power BI.
+I created this portfolio to showcase my analytical toolbox that encompasses: SQL, Tableau, Power BI, Excel and Python. 
 
 Reach to me via Linkedin https://www.linkedin.com/in/dionahall-1/
 
@@ -29,7 +29,7 @@ Excel Bike Share Dashboard: https://github.com/dhall-analyst/Porfolio-Projects/b
 PPT/PowerBI: https://onedrive.live.com/embed?cid=C6004278DA113AE9&resid=C6004278DA113AE9%2149673&authkey=AAzb2RVTy0HbrJ0&em=2&wdAr=1.7777777777777777
 
 
-# ** Python Projects **
+# **Python: Non-Data Based Projects **
 
 1. Color Quiz Mini Game
 https://github.com/dhall-analyst/Porfolio-Projects/blob/main/Python:%20Color%20Quiz%20Mini%20Game.py

@@ -29,8 +29,11 @@ Excel Bike Share Dashboard: https://github.com/dhall-analyst/Porfolio-Projects/b
 PPT/PowerBI: https://onedrive.live.com/embed?cid=C6004278DA113AE9&resid=C6004278DA113AE9%2149673&authkey=AAzb2RVTy0HbrJ0&em=2&wdAr=1.7777777777777777
 
 
-# ** Python Projects Coming Soon**
+# ** Python Projects **
 
-    I will soon upload my project from the Maven Analytics Python and Data Analysis Course. 
+1. Color Quiz Mini Game
+https://github.com/dhall-analyst/Porfolio-Projects/blob/main/Python:%20Color%20Quiz%20Mini%20Game.py
+2. Number Guessing Game
+https://github.com/dhall-analyst/Porfolio-Projects/blob/main/Python:%20Number%20Guessing%20Game.py
 
 

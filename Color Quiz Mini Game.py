@@ -23,7 +23,7 @@ if answer.lower() == "green":
     print('Correct!')
     score += 1
 else: 
-    print('Incorrect!
+    print('Incorrect!')
           
 answer = input('What color are Pineapples? ')
 if answer.lower() == "yellow": 

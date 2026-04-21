@@ -1,0 +1,61 @@
+START HERE! Pulling Table from PDF, Altering Table, sending to CSV
+pip install tabula-py
+pip install pandas
+pip install tabulate
+
+pip install lxml
+import pandas as pd
+
+from tabula import read_pdf
+
+df = read_pdf('Sample_2024.pdf', pages='all')
+
+import tabula
+from tabulate import tabulate
+
+import numpy as np
+
+#### Context for wher etables start, first true table is at position 8 ######
+tables = tabula.read_pdf("Sample_2024.pdf", pages="all")
+tableofcont =  tables[0:3] ## Table of Contents ##
+table8 = tables[8] ## Table 8 Starting at Net Position - Primary Govt - 2 year comparison
+
+
+
+len(df)
+
+df[8].head(10)
+netp = df[8][["Unnamed: 0", "Governmental Activities", "Business-type Activities" , "Unnamed: 3",  "Unnamed: 4"]]
+netp.head(5)
+
+netp.rename(columns={'Unnamed: 0' :'Assets',  'Unnamed: 3': 'Total: 2024', 'Unnamed: 4': 'Total: 2023'}, inplace=True)
+netp.head()
+
+netp.head(5)
+
+
+netp[["2024 Bus-Act", "2023 Bus-Act", "Bus fix"]] = netp['Business-type Activities'].str.split(' ',n=2, expand=True)
+
+netp[["2024 Gov-Act", "2023 Gov-Act", "Gov fix"]] = netp['Governmental Activities'].str.split(' ',n=2, expand=True)
+netp['Business-type Activities'].str.split(' ',n=2, expand=True)
+
+
+netp.head(10)
+
+netp = netp.drop(columns= ['Business-type Activities', 'Governmental Activities'])
+
+netp.head(10)
+
+
+netp = netp.reset_index(drop=True)
+netp.head(10)
+
+
+
+netp.dtypes
+netp.tail(23)
+
+import pandas as pd 
+
+netp.to_csv('net_position_df.csv', index=False)
+
